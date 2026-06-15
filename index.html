@@ -1,0 +1,313 @@
+<div class="dashboard">
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <title>Domitianus ERP v1.0</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="sidebar">
+    <div class="logo-area" style="border-bottom: 1px solid #252a30; padding: 10px 10px 20px 10px; margin-bottom: 25px; text-align: center;">
+      <div style="font-size: 10px; font-weight: 700; color: #8a94a6; letter-spacing: 0.8px; margin-bottom: 6px; line-height: 1.4;">
+        T.C. KÜLTÜR VE TURİZM BAKANLIĞI
+      </div>
+      <div style="font-size: 11px; font-weight: 600; color: #ffffff; line-height: 1.4; margin-bottom: 12px; opacity: 0.95; padding: 0 5px;">
+        İZMİR RESTORASYON VE KONSERVASYON BÖLGE LABORATUVARI MÜDÜRLÜĞÜ
+      </div>
+      <div class="logo" style="font-size: 15px; font-weight: 700; color: #00b4d8; letter-spacing: 0.5px; display: flex; align-items: center; justify-content: center; gap: 6px; margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.05);">
+        <span>🏛️</span> DOMITIANUS ERP v1.0
+      </div>
+    </div>
+    <nav>
+      <a href="#" class="menu-link active" data-target="dashboard-section">🏠 Dashboard</a>
+      <a href="#" class="menu-link" data-target="timeline-section">⏱️ Canlı Akış</a>
+      <a href="#" class="menu-link" data-target="konservasyon-section">🧽 Konservasyon & Restorasyon</a>
+      <a href="#" class="menu-link" data-target="kurasyon-section">🏛️ Galeri & Lojistik</a>
+      <a href="#" class="menu-link" data-target="reports-section">📄 Raporlar</a>
+    </nav>
+  </div>
+
+  <div class="main-content">
+    
+    <section id="dashboard-section" class="app-section active">
+      <div class="header">
+        <h2>Domitianus Antik Yapı & Taş Eserler Koruma Paneli</h2>
+        <div class="status-badge">🟢 RESTORASYON SÜRECİ AKTİF</div>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <h3>⏱️ Kalan Net Süre</h3>
+          <p>320 Gün</p>
+          <span>365 gün üzerinden</span>
+        </div>
+        <div class="stat-card">
+          <h3>👥 Aktif Kadro</h3>
+          <p id="dashboard-uzman-sayisi">10 Uzman</p>
+          <span>+80 Adam/Saat bugün</span>
+        </div>
+        <div class="stat-card">
+          <h3>📈 Genel İlerleme</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 35%"></div>
+          </div>
+          <span style="display:block; margin-top:10px;">%35 Tamamlandı</span>
+        </div>
+
+        <div id="stok-uyari-paneli" class="stat-card" style="display: none; background: rgba(231, 76, 60, 0.1); border: 1px solid rgba(231, 76, 60, 0.3); grid-column: 1 / -1; margin-top: 15px;">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <span style="font-size: 24px;">⚠️</span>
+            <div>
+              <h4 style="color: #e74c3c; margin: 0; font-size: 14px; font-weight: bold; letter-spacing: 0.5px;">KRİTİK SAF MALZEME / ŞANTİYE STOK EŞİĞİ ALARMI</h4>
+              <p id="stok-uyari-metni" style="color: #ffffff; margin: 6px 0 0 0; font-size: 13px; line-height: 1.4;"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="dashboard-double-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 30px;">
+        <div class="dash-box" style="background: #2a2a32; padding: 20px; border-radius: 8px; border: 1px solid #353540;">
+          <h3 style="color: #00b4d8; margin-top: 0; font-size: 16px; border-bottom: 1px solid #353540; padding-bottom: 10px;">📊 Canlı Reçete, Ekipman & Malzeme Sarfiyat Çetelesi</h3>
+          <div id="dash-malzeme-listesi" style="font-size: 13px; color: #a0a0ab; display: flex; flex-direction: column; gap: 8px; margin-top: 15px;">
+            <p style="font-style: italic; margin: 0;">Henüz şantiyeden veya laboratuvardan malzeme sarfiyat kaydı girilmedi. Form dolduruldukça burası anlık olarak güncellenir.</p>
+          </div>
+        </div>
+        
+        <div class="dash-box" style="background: #2a2a32; padding: 20px; border-radius: 8px; border: 1px solid #353540; display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h3 style="color: #ffb703; margin-top: 0; font-size: 16px; border-bottom: 1px solid #353540; padding-bottom: 10px;">⚙️ İdari ve Yapısal Yönetim</h3>
+            <p style="font-size: 13px; color: #a0a0ab; margin-top: 10px;">Bakanlık ve Bölge Laboratuvarı idari kararları doğrultusunda şantiye operasyon durumunu anlık olarak değiştirebilirsiniz.</p>
+          </div>
+          <div class="admin-controls" style="display: flex; gap: 10px;">
+            <button id="btn-askiya-al" class="btn yellow-btn" style="flex: 1;">⏸️ Projeyi Askıya Al</button>
+            <button id="btn-baslat" class="btn blue-btn" style="display:none; flex: 1;">▶️ Yeniden Başlat</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="timeline-section" class="app-section" style="display: none;">
+      <div class="header">
+        <h2>Saha Günlüğü & Yapısal İzleme</h2>
+      </div>
+
+      <div class="timeline">
+        <div class="timeline-search-area" style="margin-bottom: 20px; background: rgba(255,255,255,0.02); padding: 15px; border-radius: 8px; border: 1px solid #353540;">
+          <label style="font-size: 12px; color: #8a94a6; display: block; margin-bottom: 8px; font-weight: bold; letter-spacing: 0.5px;">🔍 LOG ARŞİVİNDE ANLIK METİN / UZMAN / YÖNTEM ARAMASI</label>
+          <input type="text" id="timeline-search-input" placeholder="Aramak istediğiniz kelimeyi yazın (Örn: Çağlar, Enjeksiyon, Tonoz, Eldiven...)" style="width: 100%; padding: 12px; background: #171b22; border: 1px solid #353540; border-radius: 6px; color: #fff; font-size: 14px; outline: none; box-sizing: border-box;">
+        </div>
+
+        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 15px; gap: 10px;">
+          <h3 style="margin: 0; font-size: 14px; color: #8a94a6;">⚡ Filtrelenmiş Saha & Laboratuvar Günlüğü</h3>
+          <div class="filter-buttons" style="display: flex; gap: 8px;">
+            <button class="btn-filter active" data-filter="all">Hepsi</button>
+            <button class="btn-filter" data-filter="devam">⏳ Devam Edenler</button>
+            <button class="btn-filter" data-filter="hazir">✨ Tamamlananlar</button>
+            <button class="btn-filter" data-filter="sistem">📐 Belgeleme & Restorasyon</button>
+          </div>
+        </div>
+        
+        <div class="timeline-card type-hazir">
+          <div class="card-header">
+            <h4>🧽 Ahmet Yılmaz (Restoratör)</h4>
+            <span class="time">5 dk önce</span>
+          </div>
+          <p style="font-size:11px; color:#00b4d8; font-weight:bold; margin-bottom:4px;">[🏛️ Taşınabilir Eser Konservasyonu]</p>
+          <p><strong>Envanter No: DOM-2026-T01</strong> - Mekanik Temizlik aşaması tamamlandı. Yüzeydeki yoğun is and liken tabakası arındırıldı.</p>
+          <div class="badge">Konservasyon Tamamlandı</div>
+        </div>
+      </div>
+
+      <div class="tarama-paneli" style="margin-top: 40px; padding-top: 30px; border-top: 1px solid #353540;">
+        <h3 style="color: #ffffff; margin-bottom: 20px;">📐 Mimari Belgeleme, Yapısal Restorasyon ve Konservasyon Süreçleri</h3>
+        
+        <div class="proje-flow-container" style="background-color: #2a2a32; border-radius: 12px; padding: 25px; border: 1px solid #353540;">
+          <p style="font-size: 13px; color: #a0a0ab; margin-top: 0; margin-bottom: 20px;">
+            Domitianus Tapınağı'nın koruma projesi kapsamında yürütülen metrik belgeleme (rölöve) adımları ile eş zamanlı yürütülen mimari restorasyon/konservasyon müdahale evreleri:
+          </p>
+          
+          <div class="mimari-adimlar-listesi" style="display: flex; flex-direction: column; gap: 12px;">
+            <div class="adim-item" id="adim-1" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #171b22; border-radius: 6px; border-left: 4px solid #2ecc71;">
+              <div>
+                <strong style="color:#ffffff; font-size:14px;">Aşama 1: 3D Metrik Lazer Tarama & Hasar Belgeleme</strong>
+                <div style="font-size:12px; color:#6b778c; margin-top:3px;">Saha taraması bitti. Çatlak haritalama ve malzeme kaybı lejandları mimari altlıklara işlendi.</div>
+              </div>
+              <span style="font-size:11px; font-weight:bold; color:#2ecc71; background:rgba(46,204,113,0.1); padding:4px 8px; border-radius:4px;">✅ TAMAMLANDI</span>
+            </div>
+
+            <div class="adim-item" id="adim-2" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #171b22; border-radius: 6px; border-left: 4px solid #2ecc71;">
+              <div>
+                <strong style="color:#ffffff; font-size:14px;">Aşama 2: Mimari Rölöve ve Strüktürel Analiz</strong>
+                <div style="font-size:12px; color:#6b778c; margin-top:3px;">Taş mimari yapının statik yük analizleri yapıldı, tonozlardaki ayrılma boyutları ölçüldü.</div>
+              </div>
+              <span style="font-size:11px; font-weight:bold; color:#2ecc71; background:rgba(46,204,113,0.1); padding:4px 8px; border-radius:4px;">✅ TAMAMLANDI</span>
+            </div>
+
+            <div class="adim-item" id="adim-3" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #171b22; border-radius: 6px; border-left: 4px solid #2ecc71;">
+              <div>
+                <strong style="color:#ffffff; font-size:14px;">Aşama 3: Yapısal Konservasyon (Mikro Enjeksiyon & Entegrasyon)</strong>
+                <div style="font-size:12px; color:#6b778c; margin-top:3px;">Duvar içlerindeki boşluklara hidrolik kireç esaslı mikro enjeksiyon basıldı, derin çatlaklar paslanmaz çelik dikişlerle bağlandı.</div>
+              </div>
+              <span style="font-size:11px; font-weight:bold; color:#2ecc71; background:rgba(46,204,113,0.1); padding:4px 8px; border-radius:4px;">✅ TAMAMLANDI</span>
+            </div>
+
+            <div class="adim-item" id="adim-4" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #171b22; border-radius: 6px; border-left: 4px solid #00b4d8;">
+              <div>
+                <strong style="color:#ffffff; font-size:14px;">Aşama 4: Mimari Taş Restorasyonu & Özgün Harç Tamamlamaları</strong>
+                <div style="font-size:12px; color:#6b778c; margin-top:3px;">Yüzey ayrışmaları gösteren mimari bloklarda bütünleme and kireç esaslı harçlarla derz restorasyonları yapılıyor.</div>
+              </div>
+              <span id="badge-adim-4" style="font-size:11px; font-weight:bold; color:#00b4d8; background:rgba(0,180,216,0.1); padding:4px 8px; border-radius:4px;">⏳ SÜREÇ AKTİF</span>
+            </div>
+
+            <div class="adim-item" id="adim-5" style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #171b22; border-radius: 6px; border-left: 4px solid #555b66;">
+              <div>
+                <strong style="color:#8a94a6; font-size:14px;">Aşama 5: Yüzey Koruma, Desalinasyon ve Son Teslim</strong>
+                <div style="font-size:12px; color:#555b66; margin-top:3px;">Yapının atmosferik etkilere açık dış cephe taşlarında tuz arındırma and nanometrik koruyucu konsolidant uygulaması.</div>
+              </div>
+              <span id="badge-adim-5" style="font-size:11px; font-weight:bold; color:#555b66; background:#22252c; padding:4px 8px; border-radius:4px;">🔒 BEKLEMEDE</span>
+            </div>
+          </div>
+
+          <button id="btn-proje-ilerlet" class="btn yellow-btn" style="margin-top: 25px; width: 100%;">📐 Bir Sonraki Restorasyon/Müdahale Aşamasına Geç (Genel Müdürlük Onaylı İlerleme)</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="konservasyon-section" class="app-section" style="display: none;">
+      <div class="header">
+        <h2>Laboratuvar & Şantiye Müdahale Merkezi</h2>
+      </div>
+      
+      <div class="konservasyon-paneli" style="background-color: #2a2a32; border-radius: 12px; padding: 25px; border: 1px solid #353540;">
+        
+        <div class="sablon-alani" style="margin-bottom: 25px; padding-bottom: 20px; border-bottom: 1px dashed #353540; display: flex; gap: 12px; align-items: center;">
+          <span style="font-size: 13px; color: #8a94a6; font-weight: bold;">⚡ Domitianus Hızlı Şablonları:</span>
+          <button id="btn-sablon-tasinabilir" class="btn" style="width: auto; padding: 8px 16px; background: rgba(0, 180, 216, 0.1); color: #00b4d8; border: 1px solid rgba(0, 180, 216, 0.3); font-size: 12px; border-radius: 4px;">🏛️ Taşınabilir Blok Şablonu</button>
+          <button id="btn-sablon-tasinmaz" class="btn" style="width: auto; padding: 8px 16px; background: rgba(255, 183, 3, 0.1); color: #ffb703; border: 1px solid rgba(255, 183, 3, 0.3); font-size: 12px; border-radius: 4px;">🧱 Mimari Yapı/Tonoz Şablonu</button>
+        </div>
+
+        <h3 style="color: #ffffff; margin-bottom: 20px;">🔬 Konservasyon & Mimari Restorasyon Giriş Formu</h3>
+        
+        <div class="form-grid">
+          <div class="form-group">
+            <label>Müdahaleyi Yapan Uzman (Ad Soyad)</label>
+            <input type="text" id="uzman-adi" placeholder="Örn: Çağlar Çakır">
+          </div>
+          
+          <div class="form-group">
+            <label id="lbl-eser-no">Envanter No / Tanımlayıcı Kod</label>
+            <input type="text" id="eser-no" placeholder="Örn: DOM-2026-T04">
+          </div>
+
+          <div class="form-group">
+            <label>Müdahale Segmenti / Ölçeği</label>
+            <select id="mudahale-segmenti" style="border-color: #00b4d8; background-color: rgba(0,180,216,0.02);">
+              <option value="tasinabilir">🏛️ Taşınabilir Kültür Varlığı (Taş Eser Konservasyon)</option>
+              <option value="tasinmaz">🧱 Taşınmaz Kültür Varlığı (Mimari Yapı Restorasyonu)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Uygulanan Spesifik Müdahale / Yöntem</label>
+            <select id="mudahale-yontemi">
+              <option value="Bistüri ile Mekanik Temizlik">🧽 Bistüri ile Mekanik Kalker Arındırması</option>
+              <option value="Kimyasal Mikro Kompres">🧪 Kimyasal Kompres Uygulaması (Leke/Tuz Çıkarma)</option>
+              <option value="Ultrasonik Kalemle Hassas Temizlik">🖋️ Ultrasonik Kalemle Hassas Kabuk Arındırma</option>
+              <option value="Paraloid B-72 Entegrasyonu">💎 Konsolidasyon ve Kırık Parça Birleştirme</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label>Kullanılan Malzeme / Sarf Malzemesi / Reçete</label>
+            <input type="text" id="malzeme-reçete" list="malzeme-onerileri" placeholder="Eldiven, epoksi, harç veya özel bir reçete girin...">
+            <datalist id="malzeme-onerileri">
+              <option value="Nitril Muayene Eldiveni (Pudra Esassız)">
+              <option value="3M Toz Maskesi (FFP3 Standart)">
+              <option value="Şantiye Koruyucu Gözlüğü (Anti-Fog)">
+              <option value="Restorasyon Koruyucu Bareti">
+              <option value="Akışkan Yapısal Taş Epoksisi (A+B Bileşen)">
+              <option value="Macun Kıvamlı Tiksotropik Epoksi Yapıştırıcı">
+              <option value="Paraloid B-72 (%5 Aseton Çözeltisi)">
+              <option value="Paraloid B-72 (%10 Toluen Çözeltisi)">
+              <option value="Geleneksel Bordür Sağlamlaştırma Harcı">
+              <option value="Doğal Hidrolik Kireç (NHL 3.5)">
+              <option value="NHL 2 Esaslı Boşluk Enjeksiyon Şerbeti">
+              <option value="Geleneksel Puzolanik Kireç Harcı">
+              <option value="Silis Esaslı Etil Silikat Taş Konsolidantı">
+              <option value="Kimyasal Kompres İçin Selüloz Püre Altlığı">
+              <option value="Analitik Saf Aseton (Desalinasyon Destekli)">
+              <option value="Mikroskobik Bistüri Ucu (No:11)">
+            </datalist>
+          </div>
+          
+          <div class="form-group">
+            <label>Müdahale Sonrası Mevcut Durum</label>
+            <select id="eser-durum">
+              <option value="Müdahale Devam Ediyor">⏳ Uygulama/Kürlenme Süreci Devam Ediyor</option>
+              <option value="Teşhire Hazır">✨ Uygulama Başarılı / Hazır</option>
+            </select>
+          </div>
+        </div>
+        <button id="btn-form-kaydet" class="btn blue-btn" style="margin-top: 20px; width: 100%;">💾 Müdahaleyi Sisteme İşle, Çeteleyi Güncelle and Akışa Gönder</button>
+      </div>
+    </section>
+
+    <section id="kurasyon-section" class="app-section" style="display: none;">
+      <div class="header">
+        <h2>Efes Müzesi Kürasyon & Lojistik</h2>
+      </div>
+      <div class="kurasyon-paneli" style="background-color: #2a2a32; border-radius: 12px; padding: 25px; border: 1px solid #353540;">
+        <h3 style="color: #ffffff; margin-bottom: 20px;">🏛️ Eser Nakil & Kürasyon İzleme Çetelesi</h3>
+        <div class="galeri-listesi">
+          <div class="eser-row" id="eser-row-1">
+            <div class="eser-info">
+              <strong>DOM-T-01: Domitianus Alınlık Bloğu</strong>
+              <span class="eser-detay">Mermer | 240x120 cm | Ağır Tonaj</span>
+            </div>
+            <div class="eser-status-flow">
+              <span class="flow-badge active" data-status="lab">Laboratuvarda</span> 
+              <span class="flow-badge" data-status="yol">Yolda</span> 
+              <span class="flow-badge" data-status="monte">Monte Edildi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="reports-section" class="app-section" style="display: none;">
+      <div class="header">
+        <h2>Kurumsal Raporlama Merkezi</h2>
+      </div>
+      <div class="rapor-kart-gövde" style="background-color: #2a2a32; border-radius: 12px; padding: 25px; border: 1px solid #353540;">
+        <p style="color: #a0a0ab; margin-top: 0; margin-bottom: 20px;">Sistemde kayıtlı olan tüm mimari restorasyon enjeksiyon fişleri, kimyasal müdahale raporları and laboratuvar günlükleri taranarak resmi kurul formatında entegre rapor derlenir.</p>
+        
+        <button id="btn-rapor-uret" class="btn blue-btn">📋 Resmi İlerleme ve Müdahale Raporu Derle</button>
+        <button id="btn-rapor-yazdir" class="btn yellow-btn" style="display: none; margin-top: 15px; background-color: #ffb703; color: #111111;">🖨️ Raporu PDF Olarak Kaydet / Yazdır</button>
+        
+        <div id="resmi-rapor-çıktı">
+          <div style="text-align: center; border-bottom: 2px dashed #111111; padding-bottom: 15px; margin-bottom: 20px;">
+            <h4 style="margin: 0; font-weight: bold; letter-spacing: 1px;">T.C. KÜLTÜR VE TURİZM BAKANLIĞI</h4>
+            <h5 style="margin: 5px 0 0 0; font-weight: bold;">KÜLTÜR VARLIKLARI VE MÜZELER GENEL MÜDÜRLÜĞÜ</h5>
+            <h5 style="margin: 5px 0 0 0;">İZMİR RESTORASYON VE KONSERVASYON BÖLGE LABORATUVARI MÜDÜRLÜĞÜ</h5>
+            <h5 style="margin: 4px 0 0 0; font-size: 11px; color: #222; font-weight: normal;">DOMITIANUS TAPINAĞI MİMARİ RESTORASYON VE KONSERVASYON RESMİ RAPORU</h5>
+          </div>
+          <p><strong>Rapor Tarihi:</strong> <span>12.06.2026</span></p>
+          <p><strong>Proje Koordinatörü:</strong>  Çağlar ÇAKIR (Laboratuvar Müdürü & Koruma Uzmanı)</p>
+          <p><strong>Mevcut Yapısal İlerleme Durumu:</strong> <span style="color: #111111; font-weight: bold;">%35 ORANINDA TAMAMLANMIŞTIR</span></p>
+          <div style="margin-top: 20px; border-bottom: 1px solid #ddd; padding-bottom: 10px;">
+            <strong>📋 YAPILAN STRÜKTÜREL VE KİMYASAL MÜDAHALELERİN KRONOLOJİSİ:</strong>
+            <ul id="rapor-aktivite-listesi"></ul>
+          </div>
+          <div style="margin-top: 20px; font-size: 11px; color: #555; text-align: center; font-style: italic;">
+            * İşbu rapor Kültür Varlıkları ve Müzeler Genel Müdürlüğü resmi raporlama formatına uygun olarak Domitianus v1.0 Otomasyon Sistemi tarafından otomatik üretilmiştir.
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
